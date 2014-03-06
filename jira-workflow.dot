@@ -8,7 +8,6 @@ digraph jira_workflow {
         Open              [ label = "Open\n(Developer)" ];
         Accepted          [ label = "Accepted\n(Owner)" ];
         Reviewing         [ label = "Reviewing\n(Owner)" ];
-        Approved          [ label = "Approved\n(Owner)" ];
         
         Start             -> Open              [ label = "Create Ticket" ];
         Open              -> Open              [ label = "Assign owner" color = "red4" ];
@@ -23,9 +22,21 @@ digraph jira_workflow {
         Reviewing         -> Accepted          [ label = "Recall PR" color = "red4:purple:red4" penwidth=1.0 ];
         Closed            -> Open              [ label = "Reopen" color = "red4" ];
 
+        A0       [ label = "A" ];
+        A1       [ label = "A" ];
+        A2       [ label = "A" ];
+        A3       [ label = "A" ];
+        A4       [ label = "A" ];
+        
+        B0       [ label = "B" ];
+        B1       [ label = "B" ];
+        B2       [ label = "B" ];
+        B3       [ label = "B" ];
+        B4       [ label = "B" ];
+
         A0 -> B0 [ label = "User action" ];
         A1 -> B1 [ label = "Developer action" color = "red4" ];
         A2 -> B2 [ label = "Owner action" color = "red4:purple:red4" penwidth=1.0 ];
-        A3 -> B3 [ label = "Buildbot action" color = "darkgreen" ];
+        A3 -> B3 [ label = "Owner then Bamboo\n(buildbot) action" color = "darkgreen" ];
         A4 -> B4 [ label = "Reviewer action" color = "navy" ];
 }
