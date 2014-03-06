@@ -10,7 +10,7 @@ $ dot -T png jira-workflow.dot -o jira-workflow.png
 ## Roles
 1. User: Anyone with an account to create ticket on Zillians JIRA
 2. Developer: A Thor developer
-3. Owner: A **Developer** responsible for handling the ticket
+3. Owner: A **Developer** responsible for handling the ticket. Could be assigned or self-assigned
 4. Bamboo (buildbot): Self-hosted Continue Integration system used for Thor
 5. Reviewer: A **Developer** who is assigned as a reviewer when Owner sends PR on Bitbucket
 
@@ -20,12 +20,12 @@ $ dot -T png jira-workflow.dot -o jira-workflow.png
   1. **Owner** sends a PR (and assigns one or more **reviewers** on Bitbucket), which triggers a build and test flow on our Bamboo buildbot
     1. If buildbot finds the PR to **pass**. It sends notification emails to ticket **Owner** and **Reviewer**s, triggers the ticket to transit to **Reviewing** state and updates the ticket
     2. If buildbot finds the PR to **fail**. It sends notification emails to ticket **Owner** and **Reviewer**s and updates the ticket
-  2. **Owner** re-**assign**s the ticket for:
+  2. **Owner** re-**assign**s the ticket for one of the following reasons:
     1. The ticket was incorrectly assigned. Current **Owner** is not the right person for handling the ticket
     2. The ticket reqiures more information (log, version, evironment setting and etc) to be processed
     3. The ticket is invalid or a duplicate
 3. When there are sufficient reviews on a successfully built and tested PR. The owner may:
-  1. Merge the PR and **close** the ticket
+  1. Merge the PR and **close** the ticket, or
   2. **Recall** the PR and rework on the ticket. The ticket transits back to **Accepted** state
 
 Note that **Reviewer approves** and **Reviewer disapproves** are pseudo transitions, nothing really happens on JIRA side. Two things in particular make this transition very challenging to automate:
