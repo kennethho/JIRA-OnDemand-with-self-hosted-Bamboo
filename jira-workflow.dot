@@ -14,8 +14,8 @@ digraph jira_workflow {
         Open              -> Closed            [ label = "Mark as\ninvalid / duplicate" color = "red4" ];
         Open              -> Accepted          [ label = "Accept" color = "red4:purple:red4" penwidth=1.0 ];
         Accepted          -> Open              [ label = "Re-assign / Reject" color = "red4:purple:red4" penwidth=1.0 ];
-        Accepted          -> Reviewing         [ label = "PR build and test pass" color = "darkgreen" ];
-        Accepted          -> Accepted          [ label = "PR build or test fail" color = "darkgreen" ];
+        Accepted          -> Reviewing         [ label = "PR then build/test pass" color = "darkgreen" ];
+        Accepted          -> Accepted          [ label = "PR then build/test fail" color = "darkgreen" ];
         Reviewing         -> Reviewing         [ label = "Reviewer approves" color = "navy" ];
         Reviewing         -> Reviewing         [ label = "Reviewer disapproves" color = "navy" ];
         Reviewing         -> Closed            [ label = "Merge then close" color = "red4:purple:red4" penwidth=1.0 ];
