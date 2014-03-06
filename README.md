@@ -8,7 +8,7 @@ $ dot -T png jira-workflow.dot -o jira-workflow.png
 1. When a ticket is created, it is in **Open** state. The ticket is to be assigned to an owner, either at the time of creation or at a later time. At this state Note that a ticket must have an owner so it could be worked on
 2. The ticket transit to **Accepted** state when it is accepted by the assigned owner. The owner should start investigating and work on the issue
   1. The owner finds its a valid issue and decides to work on a solution to the ticket. When a solution is ready, the owner sends a PR (and assigns one or more reviewers), which triggers a build and test flow on our buildbot
-    1. If buildbot finds the PR a **pass**. It sends notification emails to ticket owner and reviewers, triggers the ticket to transit to **Review Pending** state and updates the ticket
+    1. If buildbot finds the PR a **pass**. It sends notification emails to ticket owner and reviewers, triggers the ticket to transit to **Reviewing** state and updates the ticket
     2. If buildbot finds the PR a **fail**. It sends notification emails to ticket owner and reviewers and updates the ticket
   2. The owner looks into the ticket and finds the ticket
     1. Incorrectly assigned. He/she is not the right person for handling the ticket. He/she reassigns the ticket to the right person
